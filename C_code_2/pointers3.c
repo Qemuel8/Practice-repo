@@ -31,8 +31,8 @@ printf("%p\n", B);
 printf("this one is *B %p \n", *B );
 printf("this one is B+1 %p\n", B+1);
 printf("this one is *B+1 %p\n", *B+1);
-printf(" *(B+2) %p\n", *(B+2));
-printf(" *B+2 %p\n", *B+2);
+printf(" *(B+1) %p\n", *(B+1));
+printf(" *B+5 %p\n", *B+5);
 printf("this one is *(B+1)+2  %p\n", *(B+1)+2);
 	return 0;
 }
