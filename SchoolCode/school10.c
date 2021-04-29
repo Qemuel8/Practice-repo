@@ -11,20 +11,21 @@ void function()
 {
 printf("Enter a number:");
 scanf("%d", &input);
-while(temp<input)
+while(num1<input)
 {
 
 for(i = 1; i<1000; i++ )
 {	num1++;
-	if(num1%i == 0 && num1!=input)
+	if(num1%i == 0 && num1!=i)
 	{	
 		temp += num1;
 	
 		if(temp == num1)
 			{
-			array[i] = temp2;
-			temp=0;
-			i++;
+			int j = 0;
+			array[j] = temp;
+			temp = 0;
+			j++;
 			}
 	}
 }
