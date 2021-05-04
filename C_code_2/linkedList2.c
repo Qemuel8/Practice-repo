@@ -46,6 +46,8 @@ int main()
 	Insert(3,2); //List: 2,3
 	Insert(4,1); //List: 4,2,3
 	Insert(5,2); //List: 4,5,2,3
+	Insert(3,3); //List: 4,5,3,2,3
+	Insert(5,6); //List: 4,5,3,2,3,5
 	Print();
 	
 	return 0;
