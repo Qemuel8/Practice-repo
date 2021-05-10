@@ -10,44 +10,48 @@ struct Node* Insert(struct Node* head, int n)
 {
     struct Node* temp1 = (struct Node*)malloc(sizeof(struct Node*));
     temp1->data = n;
+    temp1->next = NULL;
     if(head == NULL)
     {   
         head = temp1;
-        temp1->next = NULL;
         return head;
     }else
-    {
-        while(temp1->next!=NULL)
+    {   struct Node* temp2 = head;
+        while(temp2->next!=NULL)
         {
-            temp1 = temp1->next;
+             temp2 = temp2->next;
         
         }
         temp2->next = temp1; 
-        temp1->data = n;
+        
         
     }
     return head;
 }
-void Reverse(struct Node* head, struct Node* p)
-{
-    if(p->next == NULL)
+struct Node* Reverse(struct Node* head)
+{   
+    struct Node* temp1;
+    if(temp1!=head)temp1=head;
+    if(temp1->next == NULL)
     {
-        head = p;
-        return;
+        head = temp1;
+        return head;
     }
-    Reverse(head, p->next);
-    struct Node* q = p->next;
-    q->next = p;
-    p->next = NULL;
+    Reverse(temp1->next);
+    struct Node* q = temp1->next;
+    q->next = temp1;
+    temp1->next = NULL;
 }
+
 void Print(struct Node* head)
 {
     if(head->next == NULL)
     {
+        printf("%d ", head->data);
         printf("\n");
         return;
     }
-    printf("%d", head->data);
+    printf("%d ", head->data);
     Print(head->next);
 }
 
@@ -62,6 +66,8 @@ int main()
         head = Insert(head, n);
     }
     Print(head);
+    struct Node* reversedHead = Reverse(head);
+    Print(reversedHead);
 
     return 0;
 }
