@@ -5,12 +5,12 @@ struct Node
     int data;
     struct Node* next;
 };
+struct Node* head = NULL;
 
 struct Node* Insert(struct Node* head, int n)
 {
     struct Node* temp1 = (struct Node*)malloc(sizeof(struct Node*));
     temp1->data = n;
-    temp1->next = NULL;
     if(head == NULL)
     {   
         head = temp1;
@@ -23,24 +23,22 @@ struct Node* Insert(struct Node* head, int n)
         
         }
         temp2->next = temp1; 
-        
+        temp1->next = NULL; 
         
     }
     return head;
 }
-struct Node* Reverse(struct Node* head)
+void Reverse(struct Node* p)
 {   
-    struct Node* temp1;
-    if(temp1!=head)temp1=head;
-    if(temp1->next == NULL)
+    if(p->next == NULL)
     {
-        head = temp1;
-        return head;
+        head = p;
+        return;
     }
-    Reverse(temp1->next);
-    struct Node* q = temp1->next;
-    q->next = temp1;
-    temp1->next = NULL;
+    Reverse(p->next);
+    struct Node* q = p->next;
+    q->next = p;
+    p->next = NULL;
 }
 
 void Print(struct Node* head)
@@ -58,7 +56,6 @@ void Print(struct Node* head)
 int main()
 {
     int n;
-    struct Node* head = NULL;
     for(int i = 0;i<5;i++)
     {
         printf("Please enter a number to add:");
@@ -66,8 +63,8 @@ int main()
         head = Insert(head, n);
     }
     Print(head);
-    struct Node* reversedHead = Reverse(head);
-    Print(reversedHead);
+    Reverse(head);
+    Print(head);
 
     return 0;
 }
