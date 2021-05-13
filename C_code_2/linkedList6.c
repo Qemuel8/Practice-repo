@@ -1,18 +1,19 @@
 #include<stdlib.h>
 #include<stdio.h>
 
-struct Node
-{
+struct Node  {
     int data;
     struct Node* next;
     struct Node* prev;
 
 };
+
 struct Node* head;
+
 struct Node* GetNewNode(int x)
 {
 
-    struct Node* newNode =  (struct Node*)malloc(sizeof(struct Node*));
+    struct Node* newNode =  (struct Node*)malloc(sizeof(struct Node));
     newNode->data = x;
     newNode->prev = NULL;
     newNode->next = NULL;
@@ -30,7 +31,8 @@ void InsertAtHead(int x)
     newNode->next = head;
     head = newNode;
 }
-void InsertAtEnd(int x)
+
+/*void InsertAtEnd(int x)
 {
     struct Node* newNode = GetNewNode(x);
     if(head == NULL)
@@ -40,33 +42,32 @@ void InsertAtEnd(int x)
     }
     head->next = newNode;
     newNode->prev = head;
-}
+}*/
+
 void Print()
 {
     struct Node* temp = head;
-    printf("Forward printf:");
-    while(temp->next != NULL);
+    printf("Forward:");
+    while(temp != NULL);
     {
         printf("%d ", temp->data);
         temp = temp->next;
     }
     printf("\n");
 }
+
 void ReversePrint()
 {
     struct Node* temp = head;
-    if(temp == NULL)
-    {
-        return;
-    }
-    while(temp != NULL)
+    if(temp == NULL) return; // empty list, exit
+    while(temp->next != NULL)
     {
         temp = temp->next;
     }
-    printf("Reverse print:");
-    while(temp->prev != NULL)
+    printf("Reverse:");
+    while(temp != NULL)
     {
-        printf("%d", temp->data);
+        printf("%d ", temp->data);
         temp = temp->prev;
     }
     printf("\n");
@@ -74,10 +75,15 @@ void ReversePrint()
 
 int main()
 {
-    head = NULL; 
-    InsertAtHead(2); Print(); ReversePrint();
-    InsertAtHead(4); Print(); ReversePrint();
-    InsertAtHead(6); Print(); ReversePrint();
-    return 0;
+    head = NULL;
+    InsertAtHead(2);
+    Print();
 
+
+
+
+
+
+
+return 0;
 }
