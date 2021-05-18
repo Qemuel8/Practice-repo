@@ -18,23 +18,34 @@ struct NodeP
 
 struct NodeP* top;
 
-void Add(int x)
-{
+void Add(int x, int y){
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node*));
     newNode->data = x;
     newNode->link = NULL;
-    if(head==NULL)
-    {
+    if(y == 1)
+    {  
+       struct Node* temp;
+       if(head->link!=NULL)
+       {
+           temp = head;
+           newNode->link = head->link;
+       }
         head = newNode;
+        free(temp);
         return;
     }
-    struct Node* temp;
-    temp = head;
-    while(temp->link!=NULL)
+    struct Node* temp1;
+    temp1 = head;
+    for(int i = 0; i<y-2; i++)
     {
-        temp = temp->link;
+        temp1 = temp1->link;
     }
-    temp->link = newNode;
+    struct Node* temp2;
+    temp2 = temp1->link;
+    temp1->link = newNode;
+    if(temp2 == NULL) return;
+        newNode->link = temp2->link;
+        free(temp2);
 }
 
 
@@ -77,7 +88,7 @@ struct Node* Top()
 
 bool IsEmpty()
 {
-    if(top!=NULL)
+    if(top==NULL)
     {
         return 1;
     }
@@ -90,16 +101,18 @@ void Reverse()
 {
     struct Node* p;
     p = head;
-    while(p->link != NULL)
+    while(p != NULL)
     {
     Push(p);
     p = p->link;
     }
     while(IsEmpty() != true)
     {
+        int i = 1;
         struct Node* temp;
         temp = Top();
-        Add(temp->data);
+        Add(temp->data, i);
+        i++;
         Pop();
     }
 }
@@ -111,11 +124,11 @@ int main()
 {
     head = NULL;
     top = NULL;
-    for(int i;i<5;i++)
+    for(int i=1;i<=5;i++)
     {
         printf("Please Enter a Number: ");
         scanf("%d", &a);
-        Add(a);
+        Add(a,i);
     }
     Print();
     Reverse();
