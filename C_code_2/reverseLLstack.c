@@ -17,7 +17,15 @@ struct NodeP
 };
 
 struct NodeP* top;
+struct Node* MakeNewNode(int x)
+{
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node*));
+    newNode->data = x;
+    newNode->link = NULL;
+    return newNode;
+}
 
+/*
 void Add(int x, int y){
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node*));
     newNode->data = x;
@@ -47,8 +55,33 @@ void Add(int x, int y){
         newNode->link = temp2->link;
         free(temp2);
 }
+*/
 
-
+void Add(int x, int y)
+  {
+ 
+      struct Node* newNode;
+      newNode = MakeNewNode(x);
+      struct Node* temp;
+      temp = head;
+       if(y == 1)
+      {
+         if(head != NULL) newNode->link = head->link;
+         head = newNode;
+         if(temp != NULL)free(temp);
+         return ;
+       }
+       struct Node* temp2;
+       temp2 = head;
+     for(int i = 0;i<y-2;i++)
+      {
+        if(temp2 != NULL) temp2 = temp2->link;
+      }
+       if(temp2 != NULL)temp2 = temp2->link;
+       if(temp2 != NULL) newNode->link = temp2->link;
+       head->link = newNode;
+       free(temp2);
+ }
 
 
 void Print()
