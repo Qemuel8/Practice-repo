@@ -27,9 +27,7 @@ struct Node* MakeNewNode(int x)
 
 /*
 void Add(int x, int y){
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node*));
-    newNode->data = x;
-    newNode->link = NULL;
+    struct Node* newNode = MakeNewNode(x);
     if(y == 1)
     {  
        struct Node* temp;
@@ -58,13 +56,13 @@ void Add(int x, int y){
 */
 
 void Add(int x, int y)
-  {
+{
  
       struct Node* newNode;
       newNode = MakeNewNode(x);
       struct Node* temp;
       temp = head;
-       if(y == 1)
+      if(y == 1)
       {
          if(head != NULL) newNode->link = head->link;
          head = newNode;
@@ -73,7 +71,7 @@ void Add(int x, int y)
        }
        struct Node* temp2;
        temp2 = head;
-     for(int i = 0;i<y-2;i++)
+       for(int i = 0;i<y-2;i++)
       {
         if(temp2 != NULL) temp2 = temp2->link;
       }
