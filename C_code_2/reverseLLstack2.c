@@ -1,21 +1,22 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
-int x;
+int a;
 struct Node
 {
     int data;
     struct Node* next;
-}
-struct StackNode
+};
+struct SNode
 {
     struct Node* data;
-    struct StackNode* link;
-}
+    struct SNode* link;
+};
+
 struct Node* head;
 struct SNode* top;
 
-struct Node* MakeNewNode()
+struct Node* MakeNewNode(int x)
 {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node*));
     newNode->data = x;
@@ -23,18 +24,18 @@ struct Node* MakeNewNode()
     return newNode;
 }
 
-struct Node* Top
+struct SNode* Top()
 {
-    return top->data;
+    return top;
 }
 
 void Pop()
 {
-    if(top!==NULL)
+    if(top!=NULL)
     {
-    struct SNode* temp = top;
+    struct SNode* temp = Top();
     top = top->link;
-    free(temp)
+    free(temp);
     }
 }
     
@@ -46,43 +47,75 @@ bool IsEmpty()
         return 1;
     }else
     {
-        return 0
+        return 0;
     }
 }
 
-void AddN(int x, int y)
+void Add(int x)
 {
     struct Node* newNode = MakeNewNode(x);
-    if(y==1)
-    {
-      if(head!=NULL) newNode->next = head->next;
-      head = newNode;
-    }
     struct Node* temp = head;
-    for(int i = 0;i<y-2;i++)
+    if(temp==NULL)
     {
-        if(temp!=NULL)temp = temp->next;
-        else if(temp==NULL)
+        head = newNode;
+        return;
+    }
+       while(temp->next != NULL)
         {
-            temp = MakeNewNode(0);
             temp = temp->next;
         }
-    }
-    if(temp->next!=NULL)
-    temp->next = newNode;
-
-     
+       temp->next = newNode;
+}
+void Push(struct Node* x)
+{
+    struct SNode* newNode = (struct SNode*)malloc(sizeof(struct SNode*));
+    newNode->data = x;
+    newNode->link = top;
+    top = newNode;
 }
 
 
-
-void Push()
+void Print()
 {
+    struct Node* temp = head;
+    while(temp!=NULL)
+    {
+    printf("%d ", temp->data);
+    temp = temp->next;
+    }
+    printf("\n");
+}
 
+void Delete()
+{
+    struct Node* temp = head;
+    while(temp!=NULL)
+    {
+        
+        temp = temp->next;
+        free(temp);
 
-void Print();
+    }
+    free(head);
+}
 
-void Reverse();
+void Reverse()
+{
+    struct Node* temp = head;
+    while(temp!=NULL)
+    {
+    Push(temp);
+    temp = temp->next;
+    }
+    Delete();
+    struct SNode* temp2;
+    while(IsEmpty()!=true)
+    {
+        temp2 = Top();
+        Add(temp2->data->data);
+        Pop();
+    }
+}
 
 int main()
 {
@@ -94,11 +127,11 @@ int main()
     for(int i = 0;i<j;i++)
     {
         printf("Enter a number:");
-        scanf("%d" &x);
-        AddN(x);
+        scanf("%d", &a);
+        Add(a);
     }
-    Print;
-    Reverse;
-    Print;
+    Print();
+    Reverse();
+    Print();
     return 0;
 }
