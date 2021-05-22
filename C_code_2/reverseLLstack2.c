@@ -86,19 +86,6 @@ void Print()
     printf("\n");
 }
 
-void Delete()
-{
-    struct Node* temp = head;
-    while(temp!=NULL)
-    {
-        
-        temp = temp->next;
-        free(temp);
-
-    }
-    free(head);
-}
-
 void Reverse()
 {
     struct Node* temp = head;
@@ -107,7 +94,6 @@ void Reverse()
     Push(temp);
     temp = temp->next;
     }
-    Delete();
     struct SNode* temp2;
     while(IsEmpty()!=true)
     {
