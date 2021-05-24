@@ -1,8 +1,9 @@
 #include<stdlib.h>
 #include<stdio.h>
 #include<stdbool.h>
+#include<string.h>
 
-char MyExp[][20] = {"()"};
+char MyExp[] = { '(', ')'};
 
 struct Node
 {
@@ -42,31 +43,59 @@ void Pop()
 
 bool IsEmpty()
 {
-    if(head!=NULL )
-    {
-        return false;
-    }else
+    if(head==NULL )
     {
         return true;
+    }else
+    {
+        return false;
     }
 }
-void CheckExp(int a)
+bool CheckExp(int a)
 {
     for(int i = 0;i<a-1;i++)
     {
-        if(MyExp[i] == "(" || MyExp[i] == "[" || MyExp[i] == "{")
+        if(MyExp[i] == '(' || MyExp[i] == '[' || MyExp[i] == '{')
         {
             Push(MyExp[i]);
-        }else if(MyExp[i] == ")" || MyExp[i] == "]" || MyExp[i] == "}")
+        }else if(MyExp[i] == ')' || MyExp[i] == ']' || MyExp[i] == '}')
         {
-            if(IsEmpty==true || head != MyExp[i])
+        if(MyExp[i] == ')')
+        {
+            if(IsEmpty()==true)
             {
                 return false;
             }
-            else
+            else if(head->data != '(')
             {
-                Pop();
+                return false;
             }
+             
+        }else if(MyExp[i] == ']')
+        {
+            if(IsEmpty()==true)
+            {
+                return false;
+            }
+            else if(head->data != '[')
+            {
+                return false;
+            }
+             
+        }else if(MyExp[i] == '}')
+        {
+            if(IsEmpty()==true)
+            {
+                return false;
+            }
+            else if(head->data != '{')
+            {
+                return false;
+            }
+        }else
+        {
+        Pop();
+        }
         }
     }
     if(IsEmpty() == true)
@@ -83,8 +112,14 @@ int main()
 {
     head = NULL;
     
-        CheckExp(strlen(MyExp));   
-    
+      bool p =  CheckExp(strlen(MyExp));   
+      if(p == true)
+      {
+          printf("true");
+      }else
+      {
+          printf("false");
+      }    
     return 0;
 }
 
