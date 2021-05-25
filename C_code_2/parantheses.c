@@ -3,7 +3,7 @@
 #include<stdbool.h>
 #include<string.h>
 
-char MyExp[] = { '(', ')'};
+char MyExp[] = { '{', '(', ')', '}'};
 
 struct Node
 {
@@ -51,6 +51,7 @@ bool IsEmpty()
         return false;
     }
 }
+
 bool CheckExp(int a)
 {
     for(int i = 0;i<a-1;i++)
@@ -58,47 +59,27 @@ bool CheckExp(int a)
         if(MyExp[i] == '(' || MyExp[i] == '[' || MyExp[i] == '{')
         {
             Push(MyExp[i]);
-        }else if(MyExp[i] == ')' || MyExp[i] == ']' || MyExp[i] == '}')
+        }else if( MyExp[i] == ')' || MyExp[i] == ']' || MyExp[i] == '}')
         {
-        if(MyExp[i] == ')')
-        {
-            if(IsEmpty()==true)
+            if(head != NULL)
             {
                 return false;
-            }
-            else if(head->data != '(')
+            }else if(MyExp[i] == ')' && head->data != '(')
             {
                 return false;
-            }
-             
-        }else if(MyExp[i] == ']')
-        {
-            if(IsEmpty()==true)
+            }else if(MyExp[i] == ']' && head->data != '[')
             {
                 return false;
-            }
-            else if(head->data != '[')
-            {
-                return false;
-            }
-             
-        }else if(MyExp[i] == '}')
-        {
-            if(IsEmpty()==true)
-            {
-                return false;
-            }
-            else if(head->data != '{')
+            }else if(MyExp[i] == '}' && head->data != '{')
             {
                 return false;
             }
         }else
         {
-        Pop();
-        }
+            Pop();
         }
     }
-    if(IsEmpty() == true)
+    if(head==NULL)
     {
         return true;
     }else
@@ -110,9 +91,10 @@ bool CheckExp(int a)
 
 int main()
 {
-    head = NULL;
-    
-      bool p =  CheckExp(strlen(MyExp));   
+      head = NULL;
+      int a = strlen(MyExp);
+      
+      bool p =  CheckExp(a);   
       if(p == true)
       {
           printf("true");
@@ -120,6 +102,7 @@ int main()
       {
           printf("false");
       }    
+
     return 0;
 }
 
