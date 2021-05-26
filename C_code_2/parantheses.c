@@ -3,7 +3,7 @@
 #include<stdbool.h>
 #include<string.h>
 
-char MyExp[] = { '{', '(', ')', '}'};
+char MyExp[] = {"[()()]"};
 
 struct Node
 {
@@ -40,7 +40,16 @@ void Pop()
     free(temp);
     }
 }
-
+void Print()
+{
+    struct Node* temp = head;
+    while(temp!=NULL)
+    {
+       printf("%c", temp->data);
+        temp = temp->link;
+    }
+}
+                
 bool IsEmpty()
 {
     if(head==NULL )
@@ -54,30 +63,54 @@ bool IsEmpty()
 
 bool CheckExp(int a)
 {
-    for(int i = 0;i<a-1;i++)
+    for(int i = 0;i<a;i++)
     {
         if(MyExp[i] == '(' || MyExp[i] == '[' || MyExp[i] == '{')
         {
             Push(MyExp[i]);
-        }else if( MyExp[i] == ')' || MyExp[i] == ']' || MyExp[i] == '}')
+            Print();
+            printf("%d", i);
+            printf("%c ,, ", MyExp[i]);
+        }else if( MyExp[i] == ')')
         {
-            if(head != NULL)
+            if(head == NULL)
             {
                 return false;
-            }else if(MyExp[i] == ')' && head->data != '(')
+            }else if( head->data != '(')
             {
                 return false;
-            }else if(MyExp[i] == ']' && head->data != '[')
+            }else
             {
-                return false;
-            }else if(MyExp[i] == '}' && head->data != '{')
-            {
-                return false;
+               Pop();
             }
-        }else
+        }else if( MyExp[i] == '}')
         {
-            Pop();
+            if(head == NULL)
+            {
+                return false;
+            }else if( head->data != '{')
+            {
+                return false;
+            }else
+            {
+               Pop();
+            }
+        }else if( MyExp[i] == ']')
+        {
+            if(head == NULL)
+            {
+                return false;
+            }else if( head->data != '[')
+            {
+                return false;
+            }else
+            {
+               Pop();
+            }
         }
+            Print();
+            printf("%d", i);
+            printf("%c ,, ", MyExp[i]);
     }
     if(head==NULL)
     {
@@ -93,6 +126,7 @@ int main()
 {
       head = NULL;
       int a = strlen(MyExp);
+      printf("strlen = %d", a);
       
       bool p =  CheckExp(a);   
       if(p == true)
@@ -101,7 +135,7 @@ int main()
       }else
       {
           printf("false");
-      }    
+      }  
 
     return 0;
 }
