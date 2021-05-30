@@ -5,17 +5,16 @@
 #include<ctype.h>
 #include<string.h>
 
-char MyExp[] = {"23*"};
-
+char MyExp[] = {"23*5+"};
 struct Node
 {
-    char  data;
+    int  data;
     struct Node* link;
 };
 
 struct Node* top;
 
-struct Node* MakeNewNode(char x)
+struct Node* MakeNewNode(int x)
 {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node*));
     newNode->data = x;
@@ -23,7 +22,7 @@ struct Node* MakeNewNode(char x)
     return newNode;
 }
 
-void Push(char x)
+void Push(int x)
 {
     struct Node* newNode = MakeNewNode(x);
     if(top == NULL)
@@ -52,55 +51,44 @@ struct Node* Top()
 }
 
 
-char Perform(char x, char a, char b)
+int Perform(char x, int a, int b)
 {
-    int num1, num2, res;
-    num1 = atoi(&a);
-    num2 = atoi(&b);
-    char result;
-    if(x == '*')
+     if(x == '*')
     {
-        res = num1 * num2;
-        sprintf(result, "%d", res);
-        return result;
+        return a * b;
     }
     else if( x == '/')
     {
-        res = num1 / num2;
-        sprintf(result, "%d", res);
-        return result;
+        return  a / b;    
     }
     else if(x == '+')
     {
-        res = num1 + num2;
-        sprintf(result, "%d", res);
-        return result;
+        return a + b;
     }
     else if(x == '-')
     {
-        res = num1 - num2;
-        sprintf(result, "%d", res);
-        return result;
+        return a - b;
     }
 }
 
 
 struct Node* EvaluatePostfix()
 {
+    int num, op1, op2, res;
     int a = strlen(MyExp);
     for(int i = 0;i<a;i++)
     {
-        if(isdigit(MyExp[i]) == true)
+        if(isdigit(MyExp[i]))
         {
-            Push(MyExp[i]);
+            num = MyExp[i] - 48;
+            Push(num);
         }
         else if(MyExp[i] == '*' || MyExp[i] == '/'|| MyExp[i] == '+' || MyExp[i] == '-')
         {
-            char op2 = Pop();
-            char op1 = Pop();
-            char res[10];
-            res[0] =  Perform(MyExp[i],op1,op2));
-            Push(res[0]);
+            op2 = Pop();
+            op1 = Pop();
+            res = Perform(MyExp[i],op1,op2);
+            Push(res);
         }
     }
     return Top();
