@@ -1,12 +1,11 @@
-#include<stdlib.h>
-#include<stdio.h>
-
+#include <stdio.h>
+#include <string.h>
 
 int main()
 {
-    char array[10] = {"2345"};
-    char a = array[1] + array[2];
-    printf("%c", a);
-    return 0;
-}
+	 char str[20] = "Hi.123456789";
 
+	 strcpy(str, "Changed.");
+	 puts(str);
+	 return 0;
+}

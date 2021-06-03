@@ -34,7 +34,7 @@ void Push(int x)
     top = newNode;
 }
 
-char  Pop()
+int  Pop()
 {
     if(top != NULL)
     {
