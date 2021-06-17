@@ -5,10 +5,6 @@
 #include<stdio.h>
 // {[2+(3*5)]-(2*3)}
 // 235*+23*-
-char infix[20] = {"2+3"};
-char *postfix;
-postfix= malloc(20 * sizeof(char);
-
 struct  Node
 {
     char data;
@@ -37,17 +33,28 @@ void Push(char c)
     top = newNode;
 }
 
+char Top()
+{
+    return top->data;
+}
+
 char Pop()
 {
-    char c = top->data;
+    char c = Top();
     if(top != NULL)
     {
     struct Node* temp = top;
-    top = temp->link;
+    top = top->link;
     free(temp);
     return c;
     }
 }
+
+void Add(char c, char postfix[])
+{
+    strncat(postfix, &c, 1);
+}
+    
 
 bool IsEmpty()
 {
@@ -59,50 +66,40 @@ bool IsEmpty()
         return false;
     }
 }
-char Top()
-{
-    return top->data;
-}
 
-void InfixToPostfix()
+void InfixToPostfix(char infix[], char postfix[])
 {
-    int a = strlen(infix);
-    int j = 0;
-    for(int i = 0;i<7;i++)
+    int i = 0;  
+    for(int i; i<3; i++)
     {
-        
-        for(int k = 0; k<i;k++)
+        char item = infix[i];
+        if(isdigit(item))
         {
-            printf("%c ",postfix[k]);
-        }
-        if(isdigit(infix[i]))
-        {
-            postfix[j] = infix[i];
-            j++;
+            Add(item, postfix);
 
-        }else if(infix[i] == '+' || infix[i] == '-') 
+        }else if(item == '+' || item == '-') 
         {
             if(Top() == '*' || Top() == '/')   
             { 
                 while(IsEmpty() == false)
                 {
-                    postfix[j] = Pop();
-                    j++;
+                    Add(Pop(),postfix);   
                 }
-                Push(infix[i]);
+                Push(item);
             }else
             {
-                Push(infix[i]);
+                Push(item);
             }
-        }else if(infix[i] == '/' || infix[i] == '*')
+        }else if(item == '/' || item == '*')
         {
-            Push(infix[i]);
+            Push(item);
         }
+        
     }
+
     while(IsEmpty() == false)
     {
-    postfix[j] = Pop();
-    j++;
+        Add(Pop(), postfix);       
     }
 }
 
@@ -111,13 +108,16 @@ void InfixToPostfix()
 
 int main()
 {
+    
+    char infix[20] = "2+3";
+    char postfix[50];
     top = NULL;
-    InfixToPostfix();
-    int b = strlen(postfix);
-    printf("postfix array is:");
-    for(int k = 0; k<b;k++)
+    InfixToPostfix(infix, postfix);
+    int i = 0;
+    while(postfix[i] != '\0')
     {
-        printf("%c ",postfix[k]);
+        printf("%c", postfix[i]);
+        i++;
     }
     return 0;
 }
