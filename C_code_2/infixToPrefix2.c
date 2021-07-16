@@ -12,6 +12,7 @@ struct Node
 
 struct Node* top;
 struct Node* head;
+
 char infix[] = "2+3*5-1"; // 235*+1-
 
 struct Node* MakeNewNode( char x )
@@ -20,6 +21,15 @@ struct Node* MakeNewNode( char x )
     newNode->data = x;
     newNode->link = NULL;
     return newNode;
+}
+
+char Top()
+{
+if(top != NULL)
+{
+
+    return top->data;
+}
 }
 
 void Add(char k)
@@ -61,10 +71,6 @@ struct Node* Pop()
     }
 }
 
-char Top()
-{
-    return top->data;
-}
 
 bool IsEmpty()
 {

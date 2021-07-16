@@ -31,7 +31,7 @@ struct SNode* Top()
 
 void Pop()
 {
-    if(top!=NULL)
+    if(Top() != NULL)
     {
     struct SNode* temp = Top();
     top = top->link;
