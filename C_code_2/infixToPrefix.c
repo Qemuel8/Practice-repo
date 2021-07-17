@@ -35,7 +35,10 @@ void Push(char c)
 
 char Top()
 {
+    if(top != NULL)
+    {
     return top->data;
+    }
 }
 
 char Pop()
