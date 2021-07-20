@@ -23,6 +23,7 @@ int main()
 		printf("%d", B[i]);
 		
 	}
+	int aSD;
 
 	
 	
