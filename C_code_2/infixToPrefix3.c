@@ -11,7 +11,7 @@ struct Node
 };
 
 //char array[] = "3+{2*[(2+5)+3*3]}"; // result should be = 2 5 + 3 3 * + 2 * 3 + ///// 2*(3+4)
-char array[] = "(2+3)*5";
+char array[] = "5*[(2+3)*5]";
 struct Node* top;
 struct Node* head;
 
@@ -110,8 +110,9 @@ void InfixToPostfix( int length)
             }
             else if(array[i] == ')' || array[i] == '}' || array[i] == ']')
             {
-                while(Top() != '(' || Top() != '{' || Top() != '[')
+                for(int i = 0;i<100;i++)
                 {
+                    if(Top() == '(' || Top() == '[' || Top() == '{') break;
                     Add(Top());
                     Pop();
                 }
