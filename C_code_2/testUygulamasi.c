@@ -2,7 +2,7 @@
 #include<stdlib.h>
 
 
-int function(int num1, int num2)
+int function(int num1, int num2);;
 {
     int num3;
     printf("selam bir sayi gir \n");
