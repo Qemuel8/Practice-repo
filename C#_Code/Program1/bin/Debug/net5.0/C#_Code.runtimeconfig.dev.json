@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/home/qemuel/.dotnet/store/|arch|/|tfm|",
+      "/home/qemuel/.nuget/packages"
+    ]
+  }
+}

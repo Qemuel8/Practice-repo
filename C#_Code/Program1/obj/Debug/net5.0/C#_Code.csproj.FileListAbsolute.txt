@@ -1,0 +1,16 @@
+/home/qemuel/Documents/Practice-repo/C#_Code/bin/Debug/net5.0/C#_Code
+/home/qemuel/Documents/Practice-repo/C#_Code/bin/Debug/net5.0/C#_Code.deps.json
+/home/qemuel/Documents/Practice-repo/C#_Code/bin/Debug/net5.0/C#_Code.runtimeconfig.json
+/home/qemuel/Documents/Practice-repo/C#_Code/bin/Debug/net5.0/C#_Code.runtimeconfig.dev.json
+/home/qemuel/Documents/Practice-repo/C#_Code/bin/Debug/net5.0/C#_Code.dll
+/home/qemuel/Documents/Practice-repo/C#_Code/bin/Debug/net5.0/ref/C#_Code.dll
+/home/qemuel/Documents/Practice-repo/C#_Code/bin/Debug/net5.0/C#_Code.pdb
+/home/qemuel/Documents/Practice-repo/C#_Code/obj/Debug/net5.0/C#_Code.csproj.AssemblyReference.cache
+/home/qemuel/Documents/Practice-repo/C#_Code/obj/Debug/net5.0/C#_Code.GeneratedMSBuildEditorConfig.editorconfig
+/home/qemuel/Documents/Practice-repo/C#_Code/obj/Debug/net5.0/C#_Code.AssemblyInfoInputs.cache
+/home/qemuel/Documents/Practice-repo/C#_Code/obj/Debug/net5.0/C#_Code.AssemblyInfo.cs
+/home/qemuel/Documents/Practice-repo/C#_Code/obj/Debug/net5.0/C#_Code.csproj.CoreCompileInputs.cache
+/home/qemuel/Documents/Practice-repo/C#_Code/obj/Debug/net5.0/C#_Code.dll
+/home/qemuel/Documents/Practice-repo/C#_Code/obj/Debug/net5.0/ref/C#_Code.dll
+/home/qemuel/Documents/Practice-repo/C#_Code/obj/Debug/net5.0/C#_Code.pdb
+/home/qemuel/Documents/Practice-repo/C#_Code/obj/Debug/net5.0/C#_Code.genruntimeconfig.cache
