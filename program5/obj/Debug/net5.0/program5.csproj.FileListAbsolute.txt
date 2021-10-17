@@ -1,0 +1,16 @@
+/home/qemuel/Documents/Practice-repo/program5/bin/Debug/net5.0/program5
+/home/qemuel/Documents/Practice-repo/program5/bin/Debug/net5.0/program5.deps.json
+/home/qemuel/Documents/Practice-repo/program5/bin/Debug/net5.0/program5.runtimeconfig.json
+/home/qemuel/Documents/Practice-repo/program5/bin/Debug/net5.0/program5.runtimeconfig.dev.json
+/home/qemuel/Documents/Practice-repo/program5/bin/Debug/net5.0/program5.dll
+/home/qemuel/Documents/Practice-repo/program5/bin/Debug/net5.0/ref/program5.dll
+/home/qemuel/Documents/Practice-repo/program5/bin/Debug/net5.0/program5.pdb
+/home/qemuel/Documents/Practice-repo/program5/obj/Debug/net5.0/program5.csproj.AssemblyReference.cache
+/home/qemuel/Documents/Practice-repo/program5/obj/Debug/net5.0/program5.GeneratedMSBuildEditorConfig.editorconfig
+/home/qemuel/Documents/Practice-repo/program5/obj/Debug/net5.0/program5.AssemblyInfoInputs.cache
+/home/qemuel/Documents/Practice-repo/program5/obj/Debug/net5.0/program5.AssemblyInfo.cs
+/home/qemuel/Documents/Practice-repo/program5/obj/Debug/net5.0/program5.csproj.CoreCompileInputs.cache
+/home/qemuel/Documents/Practice-repo/program5/obj/Debug/net5.0/program5.dll
+/home/qemuel/Documents/Practice-repo/program5/obj/Debug/net5.0/ref/program5.dll
+/home/qemuel/Documents/Practice-repo/program5/obj/Debug/net5.0/program5.pdb
+/home/qemuel/Documents/Practice-repo/program5/obj/Debug/net5.0/program5.genruntimeconfig.cache

@@ -6,14 +6,32 @@ namespace program2
     {
         static void Main(string[] args)
         {
-            SayHi("Yigit", 24);
-             SayHi("Samil", 22);
-              SayHi("Baris", 20);
-            Console.ReadLine();
+           Console.Write("Enter a number: ");
+           double num1 = Convert.ToDouble(Console.ReadLine());
+
+           Console.Write("Enter operator: ");
+           string op = Console.ReadLine();
+
+           Console.Write("Enter a number: ");
+           double num2 = Convert.ToDouble(Console.ReadLine());
+
+           if(op == "+")
+           {
+               Console.WriteLine(num1 + num2);
+           }else if(op == "-")
+           {
+               Console.WriteLine(num1 - num2);
+           }else if(op == "*")
+           {
+               Console.WriteLine(num1 * num2);
+           }else if(op == "/")
+           {
+               Console.WriteLine(num1 / num2);
+           }else
+           {
+               Console.WriteLine("Wrong entry!");
+           }
         }
-        static void SayHi(string name, int age)
-        {
-            Console.WriteLine("Hello " + name + " you are : " + age);
-        }
+        
     }
 }

@@ -1,0 +1,16 @@
+/home/qemuel/Documents/Practice-repo/program4/bin/Debug/net5.0/program4
+/home/qemuel/Documents/Practice-repo/program4/bin/Debug/net5.0/program4.deps.json
+/home/qemuel/Documents/Practice-repo/program4/bin/Debug/net5.0/program4.runtimeconfig.json
+/home/qemuel/Documents/Practice-repo/program4/bin/Debug/net5.0/program4.runtimeconfig.dev.json
+/home/qemuel/Documents/Practice-repo/program4/bin/Debug/net5.0/program4.dll
+/home/qemuel/Documents/Practice-repo/program4/bin/Debug/net5.0/ref/program4.dll
+/home/qemuel/Documents/Practice-repo/program4/bin/Debug/net5.0/program4.pdb
+/home/qemuel/Documents/Practice-repo/program4/obj/Debug/net5.0/program4.csproj.AssemblyReference.cache
+/home/qemuel/Documents/Practice-repo/program4/obj/Debug/net5.0/program4.GeneratedMSBuildEditorConfig.editorconfig
+/home/qemuel/Documents/Practice-repo/program4/obj/Debug/net5.0/program4.AssemblyInfoInputs.cache
+/home/qemuel/Documents/Practice-repo/program4/obj/Debug/net5.0/program4.AssemblyInfo.cs
+/home/qemuel/Documents/Practice-repo/program4/obj/Debug/net5.0/program4.csproj.CoreCompileInputs.cache
+/home/qemuel/Documents/Practice-repo/program4/obj/Debug/net5.0/program4.dll
+/home/qemuel/Documents/Practice-repo/program4/obj/Debug/net5.0/ref/program4.dll
+/home/qemuel/Documents/Practice-repo/program4/obj/Debug/net5.0/program4.pdb
+/home/qemuel/Documents/Practice-repo/program4/obj/Debug/net5.0/program4.genruntimeconfig.cache
