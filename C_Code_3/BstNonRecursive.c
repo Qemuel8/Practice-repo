@@ -25,17 +25,23 @@ struct BstNode* Insert(struct BstNode* root, int data)
         return root;
     }
     struct BstNode* temp = root;
-    while(temp != NULL)
+    while(temp->data != data)
     {
-        if(data <= temp->data)
-        {
-            temp = temp->left;
-        }else
-        {
-            temp = temp->right;
-        }
+    if(temp->left == NULL && data <= temp->data )
+    { temp->left = MakeNewNode(data);
     }
-    temp = MakeNewNode(data);
+    else if(temp->right == NULL && data >= temp->data) 
+    {
+        temp->right = MakeNewNode(data);
+    }
+    else if(data <= temp->data)
+    {
+        temp = temp->left;
+    }else
+    {
+        temp = temp->right;
+    }
+    }
     return root;
 
 }
