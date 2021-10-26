@@ -1,5 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<stdbool.h>
+
+//remember to comment your code before you leave!
+
 struct Node //Decleration of the tree Node;
 {
     char data;
@@ -32,10 +36,18 @@ struct QNode* MakeNewQNode(struct Node* data)
     return newNode;
 }
 
+struct Node* Front()
+{
+    if(head != NULL)
+    {
+    return head->data;
+    }
+}
+
 
 void Enqueue (struct Node* data)
 {
-    struct Node* newNode = MakeNewQNode(data);
+    struct QNode* newNode = MakeNewQNode(data);
     if(head == NULL && tail == NULL)
     {
         head = tail = newNode;
@@ -54,21 +66,108 @@ void Dequeue()
     if(head == tail) 
     {
         head = tail = NULL;
-    }else{
-    head->next = head;
+    }else
+    {
+    head = head->next;
     }
     free(temp);
     
+}
+bool IsEmpty()
+{
+    if(head == NULL && tail == NULL)
+    {
+        return true;
+    }else
+    {
+        return false;
+    }
+}
+
+struct Node* Insert(struct Node* root, char data)
+{
+    if(root == NULL)
+    {
+        root = MakeNewNode(data);
+    }else if(data <= root->data)
+    {
+        root->left = Insert(root->left,data);
+    }else
+    {
+        root->right = Insert(root->right, data);
+    }
+    return root;
 }
 
 void LevelOrder(struct Node *root)
 {
     if(root == NULL) return;
+    Enqueue(root);
+    while(!IsEmpty())
+    {
+        struct Node* current = Front();
+        printf("%c", current->data);
+        if(current->left != NULL) Enqueue(current->left);
+        if(current->right != NULL) Enqueue(current->right);
+        Dequeue();
+    }
+}
+
+bool IsSubtreeLesser(struct Node* root, char value)
+{
+    if(root == NULL) return true;
+    if(root->data <= value) 
+    {
+        return true;
+    }else
+    {
+    return false;
+    }
+}
+bool IsSubtreeGreater(struct Node* root, char value)
+{
+    if(root == NULL) return true;
+    if(root->data > value) 
+    {
+        return true;
+    }else
+    {
+    return false;
+    }
+}
+
+bool IsBinarySearchTree(struct Node* root)
+{
+    if(root == NULL) return true;
+    if(IsSubtreeLesser(root->left,root->data) && IsSubtreeGreater(root->right, root->data))
+    {
+            if(IsBinarySearchTree(root->left) && IsBinarySearchTree(root->right))
+            {
+                return true;
+            }
+    }
+    return false;
 }
 
 int main()
 {
 
 struct Node* root = NULL;
-    return 0;
+root = Insert(root, 'a');
+root = Insert(root, 'b');
+root = Insert(root, 'c');
+root = Insert(root, 'd');
+root = Insert(root, 'e');
+
+LevelOrder(root);
+printf("\nIs it a binary search tree?\n ");
+if(IsBinarySearchTree(root))
+{
+    printf("True\n");
+}else{
+    printf("False\n");
 }
+if('a' < 'b') printf("asdasd");
+
+    return 0;
+}   
