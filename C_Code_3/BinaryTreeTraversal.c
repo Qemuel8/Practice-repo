@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
+#include<limits.h>
 
 //remember to comment your code before you leave!
 
@@ -113,7 +114,15 @@ void LevelOrder(struct Node *root)
     }
 }
 
-bool IsSubtreeLesser(struct Node* root, char value)
+void Inorder(struct Node* root )
+{
+    if(root == NULL) return;
+    Inorder(root->left);
+    printf("%c ", root->data);
+    Inorder(root->right);
+}
+
+/*bool IsSubtreeLesser(struct Node* root, char value)
 {
     if(root == NULL) return true;
     if(root->data <= value) 
@@ -134,19 +143,26 @@ bool IsSubtreeGreater(struct Node* root, char value)
     {
     return false;
     }
+}*/
+
+bool IsBstUtil(struct Node* root, int minValue, int maxValue)
+{
+    if(root == NULL) return true;
+    
+    if(root->data > minValue && root->data <= maxValue && IsBstUtil(root->left, minValue, root->data) && IsBstUtil(root->right, root->data, maxValue))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 bool IsBinarySearchTree(struct Node* root)
 {
-    if(root == NULL) return true;
-    if(IsSubtreeLesser(root->left,root->data) && IsSubtreeGreater(root->right, root->data))
-    {
-            if(IsBinarySearchTree(root->left) && IsBinarySearchTree(root->right))
-            {
-                return true;
-            }
-    }
-    return false;
+    
+    return IsBstUtil(root, INT_MIN ,INT_MAX);
 }
 
 int main()
@@ -154,10 +170,10 @@ int main()
 
 struct Node* root = NULL;
 root = Insert(root, 'a');
-root = Insert(root, 'b');
-root = Insert(root, 'c');
-root = Insert(root, 'd');
-root = Insert(root, 'e');
+root = Insert(root, 'x');
+root = Insert(root, 'v');
+root = Insert(root, 's');
+root = Insert(root, 'k');
 
 LevelOrder(root);
 printf("\nIs it a binary search tree?\n ");
@@ -167,7 +183,10 @@ if(IsBinarySearchTree(root))
 }else{
     printf("False\n");
 }
-if('a' < 'b') printf("asdasd");
+
+Inorder(root);
+
+//if('a' < 'b') printf("asdasd"); checking to see if a is converted to a number while comparing
 
     return 0;
 }   
