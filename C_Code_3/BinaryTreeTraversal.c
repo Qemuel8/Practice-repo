@@ -114,13 +114,15 @@ void LevelOrder(struct Node *root)
     }
 }
 
-void Inorder(struct Node* root )
+char* Inorder(struct Node* root )
 {
     if(root == NULL) return;
     Inorder(root->left);
-    printf("%c ", root->data);
+    printf("%c ", root->data); 
     Inorder(root->right);
 }
+
+
 
 /*bool IsSubtreeLesser(struct Node* root, char value)
 {
