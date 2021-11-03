@@ -107,16 +107,16 @@ void LevelOrder(struct Node *root)
     while(!IsEmpty())
     {
         struct Node* current = Front();
-        printf("%c", current->data);
+        printf("%c ", current->data);
         if(current->left != NULL) Enqueue(current->left);
         if(current->right != NULL) Enqueue(current->right);
         Dequeue();
     }
 }
 
-char* Inorder(struct Node* root )
+void Inorder(struct Node* root )
 {
-    if(root == NULL) return;
+    if(root == NULL) return ;
     Inorder(root->left);
     printf("%c ", root->data); 
     Inorder(root->right);
