@@ -2,29 +2,30 @@
 #include<stdlib.h>
 #include<stdbool.h>
 
-struct QNode
+struct QNode // Queue node
 {
     struct BstNode* data;
     struct Qnode* next;
 };
 
-struct BstNode
+struct BstNode // Binary Search tree Node 
 {
     int data;
     struct BstNode* left;
     struct BstNode* right;
 };
 
-struct Node
+struct Node // Node for stack
 {
     struct BstNode* data;
     struct Node* next;
 };
-
+//creating node starts
 struct Node* top = NULL;
 struct QNode* head = NULL;
 struct QNode* tail = NULL;
 
+// Binary search tree node and its functions are starting here:
 
 struct BstNode* MakeNewBstNode()
 {
@@ -32,6 +33,11 @@ struct BstNode* MakeNewBstNode()
     newNode->data = NULL;
     newNode->left = newNode->right = NULL;
     return newNode;
+}
+
+struct Node* FindMin(struct Node* root)
+{
+
 }
 
 struct BstNode* Insert(struct BstNode* root, int data)
@@ -51,19 +57,46 @@ struct BstNode* Insert(struct BstNode* root, int data)
     return root;
 }
 
- struct BstNode* RemoveBstNode(struct BstNode* root, int data)
+ struct BstNode* Delete(struct BstNode* root, int data)
 {
     if(root == NULL) return root;
     if(data < root->data)
     {
-        root = RemoveBstNode(root->left,data);
-    }else if(data > root->data)
-    {
-        root = RemoveBstNode(root->right,data);
+        root = Delete(root->left,data);
     }
-    
+    else if(data > root->data)
+    {
+        root = Delete(root->right,data);
+    }else // since its not larger or smaller it has to be equal to data so we have found the node we needed in O(h)
+    {
+        if(root->right == NULL && root->left == NULL)
+        {
+            free(root);
+            root == NULL; // the reason we are making root NULL after freeing it is because its a dangling root so its not going to be able to return anything
+        }
+        else if(root->right == NULL)//if right is null then left cant be null or else first condition would have been activated meaning no child node.
+        {
+            struct Node* temp = root;
+            root = root->left;
+            free(temp);
+        }
+        else if(root->left == NULL)
+        {
+            struct Node* temp = root;
+            root = root->right;
+            free(temp);
+        }
+        else// both left and right arent NULL recursion starts here 
+        { 
+            struct Node* temp = FindMin(root->right);
+            root->data = temp->data;
+            root->right = Delete(root->right, temp->data);
+        }
+    }
+    return root;
 }
 
+//Queue Node fand its functions are starting here:
 
 struct QNode* MakeNewQNode()
 {
@@ -122,6 +155,7 @@ void Dequeue()
     }
 }
 
+// Stack node and its functions start here:
 
 struct Node* MakeNewNode()
 {
